@@ -18,13 +18,16 @@ def create_all_charts(df: pd.DataFrame) -> list:
     charts = []
     
     # Dark theme template
-    template = "plotly"
+    template = "plotly_dark"
     # Designer-ish palette (blue, teal, amber, red, violet, sky, green, rose)
     colorway = ["#2563eb", "#14b8a6", "#f59e0b", "#ef4444", "#8b5cf6", "#0ea5e9", "#22c55e", "#e11d48"]
     colors = colorway
     import plotly.io as pio
     pio.templates.default = template
-    pio.templates[template]['layout']['colorway'] = colors
+    try:
+        pio.templates[template]['layout']['colorway'] = colors
+    except Exception:
+        pass
     
     # Column names (exact, from CSV)
     region_col = 'Where do you live? (Region)'
@@ -362,24 +365,24 @@ def create_html_report(charts: list, output_path: str, table_html: str):
     <title>Internet Connection Stability Analysis</title>
     <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
     <style>
-        body { background:#ffffff; color:#111827; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji"; margin:0; padding:20px; }
-        h1 { text-align:center; color:#111827; font-size:2.2em; margin:30px 0; }
-        .card { max-width:1200px; margin:24px auto; background:#ffffff; border:1px solid #e5e7eb; border-radius:12px; box-shadow: 0 2px 10px rgba(17,24,39,.06); }
+        body { background:#0b0f14; color:#e5e7eb; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji"; margin:0; padding:20px; }
+        h1 { text-align:center; color:#e5e7eb; font-size:2.2em; margin:30px 0; }
+        .card { max-width:1200px; margin:24px auto; background:#0f1720; border:1px solid #1f2937; border-radius:12px; box-shadow: 0 2px 14px rgba(0,0,0,.35); }
         .card .inner { padding:20px; }
         .chart { margin:20px 0; }
-        .badge { display:inline-block; padding:2px 8px; border-radius:999px; background:#f1f5f9; color:#0f172a; font-size:12px; border:1px solid #e2e8f0; }
+        .badge { display:inline-block; padding:2px 8px; border-radius:999px; background:#111827; color:#e5e7eb; font-size:12px; border:1px solid #1f2937; }
         .table-wrap { overflow-x:auto; }
         table { border-collapse: collapse; width: 100%; font-size: 14px; }
-        thead th { position: sticky; top: 0; background: #f8fafc; color: #0f172a; }
-        th, td { border: 1px solid #e5e7eb; padding: 8px 10px; }
-        tr:nth-child(even) { background: #f8fafc; }
+        thead th { position: sticky; top: 0; background: #111827; color: #e5e7eb; }
+        th, td { border: 1px solid #1f2937; padding: 8px 10px; }
+        tr:nth-child(even) { background: #0b1220; }
     </style>
 </head>
 <body>
     <h1>📊 Internet Connection Stability Analysis</h1>
     <div class=\"card\"><div class=\"inner\">
       <div class=\"badge\">Raw responses table</div>
-      <div class=\"table-wrap\">{TABLE_HTML}</div>
+      <div class=\"table-wrap\">""" + table_html + """</div>
     </div></div>
     <div class="card"><div class="inner">
 """
