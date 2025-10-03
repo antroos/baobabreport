@@ -423,8 +423,11 @@ def main():
     charts = create_all_charts(df)
     print(f"✓ Created {len(charts)} charts")
     
-    # Build HTML table of raw data (limited rows for size)
-    table_html = df.to_html(index=False, escape=False)
+    # Build HTML table of raw data (drop technical/empty columns)
+    df_for_table = df.loc[:, ~df.columns.str.contains(r'^Unnamed')]
+    # Drop columns that are entirely NaN
+    df_for_table = df_for_table.dropna(axis=1, how='all')
+    table_html = df_for_table.to_html(index=False, escape=False)
     print(f"\n💾 Saving to {args.output}...")
     create_html_report(charts, args.output, table_html)
     print("✓ Done!")
