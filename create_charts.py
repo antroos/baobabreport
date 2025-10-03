@@ -401,21 +401,31 @@ def create_html_report(charts: list, output_path: str, table_html: str):
     
     html_parts.append("""
     </div></div>
-    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js\" integrity=\"sha512-YcsIPjZr3WkQ8qV0H6+6+UOa8e0bqv9l1QpXkGDBoJ6SIeO+9rF1Xx2o0m3kRr8mP2zx6bG7L2Kqf8g5xg8Lmw==\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\"></script>
+    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js\"></script>
     <script>
       (function(){
         var btn = document.getElementById('downloadPdf');
         if(!btn) return;
         btn.addEventListener('click', function(){
-          var opt = {
-            margin: [10,10,10,10],
-            filename: 'Internet_Connection_Stability.pdf',
-            image: { type: 'jpeg', quality: 0.98 },
-            html2canvas: { scale: 2, useCORS: true, backgroundColor: '#0b0f14' },
-            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-            pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
-          };
-          html2pdf().set(opt).from(document.body).save();
+          try {
+            if (typeof html2pdf === 'undefined') {
+              console.warn('html2pdf not loaded, using window.print fallback');
+              return window.print();
+            }
+            var opt = {
+              margin: [10,10,10,10],
+              filename: 'Internet_Connection_Stability.pdf',
+              image: { type: 'jpeg', quality: 0.98 },
+              html2canvas: { scale: 2, useCORS: true, backgroundColor: '#0b0f14' },
+              jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+              pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+            };
+            // Use the full document element for consistent styling
+            html2pdf().set(opt).from(document.documentElement).save();
+          } catch(e) {
+            console.error('PDF generation failed:', e);
+            window.print();
+          }
         });
       })();
     </script>
