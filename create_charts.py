@@ -158,19 +158,28 @@ def create_all_charts(df: pd.DataFrame, chart_w: int = 1000, chart_h: int = 600)
         desc4 = f"Median: {round(float(s_hours.median()),2)} h; Mean: {round(float(s_hours.mean()),2)} h."
         charts.append({"fig": fig4, "desc": desc4})
     
-    # 5. Power outage frequency (Bar)
+    # 5. Power outage frequency (Horizontal Bar with clear order and labels)
     outage_freq = df[outage_freq_col].value_counts()
+    # Desired order (fall back to descending)
+    desired_order = ['Never', '1–2 times per month', 'Other']
+    labels5 = [c for c in desired_order if c in outage_freq.index] or list(outage_freq.sort_values(ascending=False).index)
+    values5 = [int(outage_freq.get(c, 0)) for c in labels5]
     fig5 = go.Figure(data=go.Bar(
-        x=outage_freq.index,
-        y=outage_freq.values,
-        marker=dict(color='#ff9f43', line=dict(color='#ffffff', width=1))
+        y=labels5,
+        x=values5,
+        orientation='h',
+        marker=dict(color='#ff9f43', line=dict(color='#ffffff', width=1)),
+        text=values5,
+        textposition='outside'
     ))
     fig5.update_layout(
         title=f"{short_titles[outage_freq_col]}",
-        xaxis_title="Frequency",
-        yaxis_title="Count",
+        xaxis_title="Responses",
+        yaxis_title="",
         template=template,
-        width=chart_w, height=chart_h
+        width=chart_w, height=chart_h,
+        xaxis=dict(range=[0, max(values5)+1 if values5 else 1]),
+        yaxis=dict(categoryorder='array', categoryarray=labels5)
     )
     desc5 = ", ".join([f"{k}: {int(v)}" for k, v in outage_freq.items()])
     charts.append({"fig": fig5, "desc": desc5})
