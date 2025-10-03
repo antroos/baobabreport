@@ -18,6 +18,13 @@
         thead th { position: sticky; top: 0; background: #111827; color: #e5e7eb; }
         th, td { border: 1px solid #1f2937; padding: 8px 10px; }
         tr:nth-child(even) { background: #0b1220; }
+        /* A4 print tuning */
+        @media print {
+          html, body { width: 210mm; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+          .card { width: 190mm; margin: 0 auto 10mm; page-break-inside: avoid; break-inside: avoid; border-color:#243247; background:#0f1720; }
+          .card + .card { page-break-before: always; break-before: page; }
+          .card .inner { padding: 10mm; }
+        }
     </style>
 </head>
 <body>
@@ -306,6 +313,7 @@
 
     </div></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
     <script>
       (function(){
         var btn = document.getElementById('downloadPdf');
@@ -316,16 +324,28 @@
               console.warn('html2pdf not loaded, using window.print fallback');
               return window.print();
             }
+            // Resize plots for print to fit A4 width
+            var plots = Array.prototype.slice.call(document.querySelectorAll('.js-plotly-plot'));
+            var originals = [];
+            plots.forEach(function(p){
+              try {
+                var gd = p; var layout = gd.layout || {}; 
+                originals.push({gd:gd, w: layout.width, h: layout.height});
+                Plotly.relayout(gd, {width: 1050, height: 650});
+              } catch(e) {}
+            });
             var opt = {
               margin: [10,10,10,10],
               filename: 'Internet_Connection_Stability.pdf',
               image: { type: 'jpeg', quality: 0.98 },
               html2canvas: { scale: 2, useCORS: true, backgroundColor: '#0b0f14' },
               jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-              pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+              pagebreak: { mode: ['css', 'legacy'], before: '.card' }
             };
-            // Use the full document element for consistent styling
-            html2pdf().set(opt).from(document.documentElement).save();
+            html2pdf().set(opt).from(document.body).save().then(function(){
+              // Restore plot sizes
+              originals.forEach(function(o){ try{ Plotly.relayout(o.gd, {width:o.w, height:o.h}); }catch(e){} });
+            });
           } catch(e) {
             console.error('PDF generation failed:', e);
             window.print();
