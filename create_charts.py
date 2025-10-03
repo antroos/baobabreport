@@ -345,7 +345,7 @@ def create_all_charts(df: pd.DataFrame) -> list:
     return charts
 
 
-def create_html_report(charts: list, output_path: str):
+def create_html_report(charts: list, output_path: str, table_html: str):
     """Combine all charts into single HTML file."""
     html_parts = [
         """
@@ -381,6 +381,19 @@ def create_html_report(charts: list, output_path: str):
         .chart {
             margin: 20px 0;
         }
+        .table-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            background: #2d2d2d;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 212, 255, 0.1);
+            overflow-x: auto;
+        }
+        table { border-collapse: collapse; width: 100%; font-size: 14px; }
+        thead th { position: sticky; top: 0; background: #1f2937; color: #e5e7eb; }
+        th, td { border: 1px solid #374151; padding: 8px 10px; }
+        tr:nth-child(even) { background: #273043; }
     </style>
 </head>
 <body>
@@ -401,9 +414,13 @@ def create_html_report(charts: list, output_path: str):
     
     html_parts.append("""
     </div>
+    <div class=\"table-container\">
+      <h2 style=\"margin-top:0;\">Raw responses table</h2>
+      {TABLE_HTML}
+    </div>
 </body>
 </html>
-""")
+""".replace('{TABLE_HTML}', table_html))
     
     with open(output_path, 'w', encoding='utf-8') as f:
         f.write('\n'.join(html_parts))
@@ -424,8 +441,10 @@ def main():
     charts = create_all_charts(df)
     print(f"✓ Created {len(charts)} charts")
     
+    # Build HTML table of raw data (limited rows for size)
+    table_html = df.to_html(index=False, escape=False)
     print(f"\n💾 Saving to {args.output}...")
-    create_html_report(charts, args.output)
+    create_html_report(charts, args.output, table_html)
     print("✓ Done!")
     print(f"\n🌐 Open: {args.output}")
 

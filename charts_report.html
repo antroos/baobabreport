@@ -31,6 +31,19 @@
         .chart {
             margin: 20px 0;
         }
+        .table-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            background: #2d2d2d;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 212, 255, 0.1);
+            overflow-x: auto;
+        }
+        table { border-collapse: collapse; width: 100%; font-size: 14px; }
+        thead th { position: sticky; top: 0; background: #1f2937; color: #e5e7eb; }
+        th, td { border: 1px solid #374151; padding: 8px 10px; }
+        tr:nth-child(even) { background: #273043; }
     </style>
 </head>
 <body>
@@ -51,6 +64,287 @@
 <div class="chart"><div>                            <div id="chart_11" class="plotly-graph-div" style="height:500px; width:100%;"></div>            <script type="text/javascript">                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("chart_11")) {                    Plotly.newPlot(                        "chart_11",                        [{"hole":0.4,"labels":["Yes, everything is available","Something is missing"],"marker":{"colors":["#51cf66","#ffd93d"]},"textinfo":"label+value+percent","textposition":"auto","values":[10,5],"type":"pie"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"rgb(17,17,17)","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#f2f5fa"},"error_y":{"color":"#f2f5fa"},"marker":{"line":{"color":"rgb(17,17,17)","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#A2B1C6","gridcolor":"#506784","linecolor":"#506784","minorgridcolor":"#506784","startlinecolor":"#A2B1C6"},"baxis":{"endlinecolor":"#A2B1C6","gridcolor":"#506784","linecolor":"#506784","minorgridcolor":"#506784","startlinecolor":"#A2B1C6"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"line":{"color":"#283442"}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scattermap":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermap"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"marker":{"line":{"color":"#283442"}},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#506784"},"line":{"color":"rgb(17,17,17)"}},"header":{"fill":{"color":"#2a3f5f"},"line":{"color":"rgb(17,17,17)"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#f2f5fa","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#f2f5fa"},"geo":{"bgcolor":"rgb(17,17,17)","lakecolor":"rgb(17,17,17)","landcolor":"rgb(17,17,17)","showlakes":true,"showland":true,"subunitcolor":"#506784"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"dark"},"paper_bgcolor":"rgb(17,17,17)","plot_bgcolor":"rgb(17,17,17)","polar":{"angularaxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""},"bgcolor":"rgb(17,17,17)","radialaxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"rgb(17,17,17)","gridcolor":"#506784","gridwidth":2,"linecolor":"#506784","showbackground":true,"ticks":"","zerolinecolor":"#C8D4E3"},"yaxis":{"backgroundcolor":"rgb(17,17,17)","gridcolor":"#506784","gridwidth":2,"linecolor":"#506784","showbackground":true,"ticks":"","zerolinecolor":"#C8D4E3"},"zaxis":{"backgroundcolor":"rgb(17,17,17)","gridcolor":"#506784","gridwidth":2,"linecolor":"#506784","showbackground":true,"ticks":"","zerolinecolor":"#C8D4E3"}},"shapedefaults":{"line":{"color":"#f2f5fa"}},"sliderdefaults":{"bgcolor":"#C8D4E3","bordercolor":"rgb(17,17,17)","borderwidth":1,"tickwidth":0},"ternary":{"aaxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""},"baxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""},"bgcolor":"rgb(17,17,17)","caxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""}},"title":{"x":0.05},"updatemenudefaults":{"bgcolor":"#506784","borderwidth":0},"xaxis":{"automargin":true,"gridcolor":"#283442","linecolor":"#506784","ticks":"","title":{"standoff":15},"zerolinecolor":"#283442","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#283442","linecolor":"#506784","ticks":"","title":{"standoff":15},"zerolinecolor":"#283442","zerolinewidth":2}}},"title":{"text":"Accessories availability"},"height":500},                        {"responsive": true}                    )                };            </script>        </div><div style="margin-top:8px;color:#9aa4b2;">Yes, everything is available: 10, Something is missing: 5</div></div>
 <div class="chart"><div>                            <div id="chart_12" class="plotly-graph-div" style="height:400px; width:100%;"></div>            <script type="text/javascript">                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("chart_12")) {                    Plotly.newPlot(                        "chart_12",                        [{"marker":{"color":["#51cf66","#ffd93d","#ff6b6b"],"line":{"color":"#ffffff","width":1}},"x":["Yes, fully","Partially","No"],"y":{"dtype":"i1","bdata":"CAYB"},"type":"bar"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"rgb(17,17,17)","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#f2f5fa"},"error_y":{"color":"#f2f5fa"},"marker":{"line":{"color":"rgb(17,17,17)","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#A2B1C6","gridcolor":"#506784","linecolor":"#506784","minorgridcolor":"#506784","startlinecolor":"#A2B1C6"},"baxis":{"endlinecolor":"#A2B1C6","gridcolor":"#506784","linecolor":"#506784","minorgridcolor":"#506784","startlinecolor":"#A2B1C6"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"line":{"color":"#283442"}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scattermap":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermap"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"marker":{"line":{"color":"#283442"}},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#506784"},"line":{"color":"rgb(17,17,17)"}},"header":{"fill":{"color":"#2a3f5f"},"line":{"color":"rgb(17,17,17)"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#f2f5fa","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#f2f5fa"},"geo":{"bgcolor":"rgb(17,17,17)","lakecolor":"rgb(17,17,17)","landcolor":"rgb(17,17,17)","showlakes":true,"showland":true,"subunitcolor":"#506784"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"dark"},"paper_bgcolor":"rgb(17,17,17)","plot_bgcolor":"rgb(17,17,17)","polar":{"angularaxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""},"bgcolor":"rgb(17,17,17)","radialaxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"rgb(17,17,17)","gridcolor":"#506784","gridwidth":2,"linecolor":"#506784","showbackground":true,"ticks":"","zerolinecolor":"#C8D4E3"},"yaxis":{"backgroundcolor":"rgb(17,17,17)","gridcolor":"#506784","gridwidth":2,"linecolor":"#506784","showbackground":true,"ticks":"","zerolinecolor":"#C8D4E3"},"zaxis":{"backgroundcolor":"rgb(17,17,17)","gridcolor":"#506784","gridwidth":2,"linecolor":"#506784","showbackground":true,"ticks":"","zerolinecolor":"#C8D4E3"}},"shapedefaults":{"line":{"color":"#f2f5fa"}},"sliderdefaults":{"bgcolor":"#C8D4E3","bordercolor":"rgb(17,17,17)","borderwidth":1,"tickwidth":0},"ternary":{"aaxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""},"baxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""},"bgcolor":"rgb(17,17,17)","caxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""}},"title":{"x":0.05},"updatemenudefaults":{"bgcolor":"#506784","borderwidth":0},"xaxis":{"automargin":true,"gridcolor":"#283442","linecolor":"#506784","ticks":"","title":{"standoff":15},"zerolinecolor":"#283442","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#283442","linecolor":"#506784","ticks":"","title":{"standoff":15},"zerolinecolor":"#283442","zerolinewidth":2}}},"title":{"text":"Workplace ergonomics"},"xaxis":{"title":{"text":"Level"}},"yaxis":{"title":{"text":"Count"}},"height":400},                        {"responsive": true}                    )                };            </script>        </div><div style="margin-top:8px;color:#9aa4b2;">Yes, fully: 8, Partially: 6, No: 1</div></div>
 
+    </div>
+    <div class="table-container">
+      <h2 style="margin-top:0;">Raw responses table</h2>
+      <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Timestamp</th>
+      <th>Where do you live? (Region)</th>
+      <th>What is your main type of internet connection?</th>
+      <th>How would you rate the stability of your internet connection in 2025?</th>
+      <th>On average, how many hours per day do you not have internet connection?</th>
+      <th>How often did you experience power outages in 2025?</th>
+      <th>What was the average duration of outages (hours) in 2025?</th>
+      <th>Do you have a backup power source (e.g., UPS, generator, solar energy)?</th>
+      <th>If yes, what kind of backup power source do you have?</th>
+      <th>If yes, how long can it provide power on average per day?</th>
+      <th>What number and type of devices are available to you?</th>
+      <th>Do you have a separate workplace at home?</th>
+      <th>Do you have the necessary accessories (webcam, headset)?</th>
+      <th>Is your workplace ergonomically equipped (chair, desk, lighting, ventilation)?</th>
+      <th>Unnamed: 14</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2025-09-29 20:20:49</td>
+      <td>Kyiv</td>
+      <td>Fiber optic</td>
+      <td>Always stable</td>
+      <td>0</td>
+      <td>Other</td>
+      <td>8</td>
+      <td>No</td>
+      <td>-</td>
+      <td>0</td>
+      <td>Laptop</td>
+      <td>Yes</td>
+      <td>Yes, everything is available</td>
+      <td>Yes, fully</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>2025-09-29 20:26:43</td>
+      <td>Kyiv</td>
+      <td>Fiber optic, Mobile data (4G/5G)</td>
+      <td>Always stable</td>
+      <td>0</td>
+      <td>Other</td>
+      <td>0</td>
+      <td>Yes</td>
+      <td>UPS, generators</td>
+      <td>8</td>
+      <td>Laptop</td>
+      <td>Yes</td>
+      <td>Yes, everything is available</td>
+      <td>Yes, fully</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>2025-09-29 20:32:58</td>
+      <td>Kirovohrad region</td>
+      <td>Fiber optic, Mobile data (4G/5G)</td>
+      <td>Always stable</td>
+      <td>0</td>
+      <td>Never</td>
+      <td>0</td>
+      <td>No</td>
+      <td>-</td>
+      <td>0</td>
+      <td>Laptop</td>
+      <td>Yes</td>
+      <td>Yes, everything is available</td>
+      <td>Yes, fully</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>2025-09-29 20:33:33</td>
+      <td>Kirovohrad region</td>
+      <td>Fiber optic</td>
+      <td>Always stable</td>
+      <td>0</td>
+      <td>Never</td>
+      <td>4</td>
+      <td>No</td>
+      <td>-</td>
+      <td>0</td>
+      <td>Laptop</td>
+      <td>Yes</td>
+      <td>Something is missing</td>
+      <td>Partially</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>2025-09-29 20:34:32</td>
+      <td>Kirovohrad region</td>
+      <td>Fiber optic</td>
+      <td>Always stable</td>
+      <td>0</td>
+      <td>Never</td>
+      <td>0</td>
+      <td>No</td>
+      <td>-</td>
+      <td>0</td>
+      <td>Laptop</td>
+      <td>Yes</td>
+      <td>Something is missing</td>
+      <td>Partially</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>2025-09-29 20:34:48</td>
+      <td>Rivne region</td>
+      <td>Fiber optic</td>
+      <td>Always stable</td>
+      <td>0</td>
+      <td>1–2 times per month</td>
+      <td>1</td>
+      <td>Yes</td>
+      <td>UPS</td>
+      <td>2</td>
+      <td>Laptop</td>
+      <td>Yes</td>
+      <td>Yes, everything is available</td>
+      <td>Partially</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>2025-09-29 20:35:47</td>
+      <td>Kyiv region</td>
+      <td>Fiber optic</td>
+      <td>Always stable</td>
+      <td>0</td>
+      <td>Never</td>
+      <td>0</td>
+      <td>Yes</td>
+      <td>Powerbanks, battery+inverter</td>
+      <td>6</td>
+      <td>Laptop</td>
+      <td>Yes</td>
+      <td>Yes, everything is available</td>
+      <td>Yes, fully</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>2025-09-29 20:45:06</td>
+      <td>Kirovohrad region</td>
+      <td>Fiber optic</td>
+      <td>Always stable</td>
+      <td>0</td>
+      <td>1–2 times per month</td>
+      <td>3</td>
+      <td>No</td>
+      <td>-</td>
+      <td>0</td>
+      <td>Desktop computer</td>
+      <td>Yes</td>
+      <td>Something is missing</td>
+      <td>No</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>2025-09-29 20:59:05</td>
+      <td>Rivne region</td>
+      <td>Fiber optic</td>
+      <td>Always stable</td>
+      <td>0</td>
+      <td>1–2 times per month</td>
+      <td>0,166</td>
+      <td>No</td>
+      <td>-</td>
+      <td>0</td>
+      <td>Laptop</td>
+      <td>Yes</td>
+      <td>Yes, everything is available</td>
+      <td>Partially</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>2025-09-29 21:06:43</td>
+      <td>Kherson</td>
+      <td>Fiber optic</td>
+      <td>Always stable</td>
+      <td>0</td>
+      <td>1–2 times per month</td>
+      <td>36</td>
+      <td>Yes</td>
+      <td>Generator</td>
+      <td>8</td>
+      <td>Laptop</td>
+      <td>Yes</td>
+      <td>Something is missing</td>
+      <td>Yes, fully</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>2025-09-29 21:07:37</td>
+      <td>Rivne region</td>
+      <td>Mobile data (4G/5G)</td>
+      <td>Sometimes disappears (1–2 times per day)</td>
+      <td>0</td>
+      <td>1–2 times per month</td>
+      <td>3</td>
+      <td>Yes</td>
+      <td>Generator</td>
+      <td>1</td>
+      <td>Laptop</td>
+      <td>No</td>
+      <td>Something is missing</td>
+      <td>Partially</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>2025-09-29 21:21:02</td>
+      <td>Kirovohrad region</td>
+      <td>Fiber optic, Mobile data (4G/5G)</td>
+      <td>Always stable</td>
+      <td>0</td>
+      <td>1–2 times per month</td>
+      <td>5</td>
+      <td>No</td>
+      <td>-</td>
+      <td>0</td>
+      <td>Laptop</td>
+      <td>Yes</td>
+      <td>Yes, everything is available</td>
+      <td>Yes, fully</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>2025-09-29 21:30:51</td>
+      <td>Kyiv region</td>
+      <td>Other</td>
+      <td>Always stable</td>
+      <td>0</td>
+      <td>Other</td>
+      <td>1</td>
+      <td>Yes</td>
+      <td>Bluetti UPS</td>
+      <td>6</td>
+      <td>Desktop computer</td>
+      <td>Yes</td>
+      <td>Yes, everything is available</td>
+      <td>Yes, fully</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>2025-09-29 21:34:05</td>
+      <td>Transcarpathian region</td>
+      <td>Fiber optic</td>
+      <td>Always stable</td>
+      <td>0</td>
+      <td>1–2 times per month</td>
+      <td>1</td>
+      <td>No</td>
+      <td>-</td>
+      <td>0</td>
+      <td>Laptop</td>
+      <td>Yes</td>
+      <td>Yes, everything is available</td>
+      <td>Yes, fully</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>2025-09-29 23:51:34</td>
+      <td>Volyn region</td>
+      <td>Fiber optic, Mobile data (4G/5G)</td>
+      <td>Always stable</td>
+      <td>0</td>
+      <td>Other</td>
+      <td>4</td>
+      <td>Yes</td>
+      <td>Generator</td>
+      <td>6</td>
+      <td>Laptop</td>
+      <td>Yes</td>
+      <td>Yes, everything is available</td>
+      <td>Partially</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
     </div>
 </body>
 </html>
