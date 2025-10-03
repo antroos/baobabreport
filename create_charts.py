@@ -13,8 +13,10 @@ def read_csv(path: str) -> pd.DataFrame:
     return df
 
 
-def create_all_charts(df: pd.DataFrame) -> list:
-    """Create all charts and return list of dicts: {fig, desc}."""
+def create_all_charts(df: pd.DataFrame, chart_w: int = 1000, chart_h: int = 600) -> list:
+    """Create all charts and return list of dicts: {fig, desc}.
+    chart_w/chart_h control uniform figure size (use ~680x340 for A4 print).
+    """
     charts = []
     
     # Dark theme template
@@ -74,7 +76,7 @@ def create_all_charts(df: pd.DataFrame) -> list:
     fig1.update_layout(
         title=f"{short_titles[region_col]} (n={int(region_counts.sum())})",
         template=template,
-        height=500,
+        width=chart_w, height=chart_h,
         showlegend=True
     )
     # Description
@@ -96,7 +98,7 @@ def create_all_charts(df: pd.DataFrame) -> list:
     fig2.update_layout(
         title=f"{short_titles[conn_col]}",
         template=template,
-        height=500
+        width=chart_w, height=chart_h
     )
     top_conn = conn_counts.idxmax()
     top_conn_share = round(100 * int(conn_counts.max()) / int(conn_counts.sum()), 1)
@@ -116,7 +118,7 @@ def create_all_charts(df: pd.DataFrame) -> list:
     fig3.update_layout(
         title=f"{short_titles[stability_col]}",
         template=template,
-        height=500
+        width=chart_w, height=chart_h
     )
     if len(stability_counts) >= 1:
         major_label = stability_counts.idxmax()
@@ -132,12 +134,12 @@ def create_all_charts(df: pd.DataFrame) -> list:
     s_hours = s_hours.dropna()
     if len(s_hours) == 0:
         fig4 = go.Figure()
-        fig4.update_layout(title=f"{short_titles[hours_col]}", template=template, height=400)
+        fig4.update_layout(title=f"{short_titles[hours_col]}", template=template, width=chart_w, height=chart_h)
         fig4.add_annotation(text="No data", showarrow=False, x=0.5, y=0.5, xref='paper', yref='paper', font=dict(size=16))
         charts.append({"fig": fig4, "desc": "All responses are zero or missing."})
     elif s_hours.sum() == 0:
         fig4 = go.Figure()
-        fig4.update_layout(title=f"{short_titles[hours_col]}", template=template, height=400)
+        fig4.update_layout(title=f"{short_titles[hours_col]}", template=template, width=chart_w, height=chart_h)
         fig4.add_annotation(text="All respondents reported 0 hours per day without internet", showarrow=False, x=0.5, y=0.5, xref='paper', yref='paper', font=dict(size=16))
         charts.append({"fig": fig4, "desc": "All respondents reported 0 hours without internet."})
     else:
@@ -151,7 +153,7 @@ def create_all_charts(df: pd.DataFrame) -> list:
             xaxis_title="Hours",
             yaxis_title="Count",
             template=template,
-            height=400
+            width=chart_w, height=chart_h
         )
         desc4 = f"Median: {round(float(s_hours.median()),2)} h; Mean: {round(float(s_hours.mean()),2)} h."
         charts.append({"fig": fig4, "desc": desc4})
@@ -168,7 +170,7 @@ def create_all_charts(df: pd.DataFrame) -> list:
         xaxis_title="Frequency",
         yaxis_title="Count",
         template=template,
-        height=400
+        width=chart_w, height=chart_h
     )
     desc5 = ", ".join([f"{k}: {int(v)}" for k, v in outage_freq.items()])
     charts.append({"fig": fig5, "desc": desc5})
@@ -180,12 +182,12 @@ def create_all_charts(df: pd.DataFrame) -> list:
     s_duration = s_duration_all[s_duration_all > 0]
     if len(s_duration_all) == 0:
         fig6 = go.Figure()
-        fig6.update_layout(title=f"{short_titles[duration_col]}", template=template, height=450)
+        fig6.update_layout(title=f"{short_titles[duration_col]}", template=template, width=chart_w, height=chart_h)
         fig6.add_annotation(text="No data available for outage duration", showarrow=False, x=0.5, y=0.5, xref='paper', yref='paper', font=dict(size=16))
         charts.append({"fig": fig6, "desc": "No outage duration data."})
     elif len(s_duration) == 0:
         fig6 = go.Figure()
-        fig6.update_layout(title=f"{short_titles[duration_col]}", template=template, height=450)
+        fig6.update_layout(title=f"{short_titles[duration_col]}", template=template, width=chart_w, height=chart_h)
         fig6.add_annotation(text="All respondents reported 0 hours (no outages or zero-duration)", showarrow=False, x=0.5, y=0.5, xref='paper', yref='paper', font=dict(size=16))
         charts.append({"fig": fig6, "desc": "All durations are zero."})
     else:
@@ -202,7 +204,7 @@ def create_all_charts(df: pd.DataFrame) -> list:
             xaxis_title="Hours",
             yaxis_title="Count",
             template=template,
-            height=450
+            width=chart_w, height=chart_h
         )
         desc6 = f"min={round(float(s_duration.min()),3)}h, median={round(float(s_duration.median()),3)}h, max={round(float(s_duration.max()),3)}h"
         charts.append({"fig": fig6, "desc": desc6})
@@ -220,7 +222,7 @@ def create_all_charts(df: pd.DataFrame) -> list:
     fig7.update_layout(
         title=f"{short_titles[backup_yes_col]}",
         template=template,
-        height=500
+        width=chart_w, height=chart_h
     )
     share_yes = round(100 * int(backup_counts.get('Yes', 0)) / int(backup_counts.sum()), 1) if int(backup_counts.sum()) else 0
     desc7 = f"Yes: {int(backup_counts.get('Yes',0))} ({share_yes}%), No: {int(backup_counts.get('No',0))}."
@@ -245,7 +247,7 @@ def create_all_charts(df: pd.DataFrame) -> list:
             xaxis_title="Count",
             yaxis_title="Type",
             template=template,
-            height=400
+            width=chart_w, height=chart_h
         )
         desc8 = ", ".join([f"{labels_bt[i]}: {values_bt[i]}" for i in range(len(labels_bt))])
         charts.append({"fig": fig8, "desc": desc8})
@@ -272,7 +274,7 @@ def create_all_charts(df: pd.DataFrame) -> list:
                 xaxis_title="Hours",
                 yaxis_title="Count",
                 template=template,
-                height=450
+                width=chart_w, height=chart_h
             )
             desc9 = ", ".join([f"{x_vals[i]}h: {y_vals[i]}" for i in range(len(x_vals))])
             charts.append({"fig": fig9, "desc": desc9})
@@ -292,7 +294,7 @@ def create_all_charts(df: pd.DataFrame) -> list:
     fig10.update_layout(
         title=f"{short_titles[device_col]}",
         template=template,
-        height=500
+        width=chart_w, height=chart_h
     )
     desc10 = ", ".join([f"{k}: {int(v)}" for k, v in device_counts.items()])
     charts.append({"fig": fig10, "desc": desc10})
@@ -310,7 +312,7 @@ def create_all_charts(df: pd.DataFrame) -> list:
     fig11.update_layout(
         title=f"{short_titles[workplace_col]}",
         template=template,
-        height=500
+        width=chart_w, height=chart_h
     )
     desc11 = ", ".join([f"{k}: {int(v)}" for k, v in workplace_counts.items()])
     charts.append({"fig": fig11, "desc": desc11})
@@ -328,7 +330,7 @@ def create_all_charts(df: pd.DataFrame) -> list:
     fig12.update_layout(
         title=f"{short_titles[accessories_col]}",
         template=template,
-        height=500
+        width=chart_w, height=chart_h
     )
     desc12 = ", ".join([f"{k}: {int(v)}" for k, v in accessories_counts.items()])
     charts.append({"fig": fig12, "desc": desc12})
@@ -345,7 +347,7 @@ def create_all_charts(df: pd.DataFrame) -> list:
         xaxis_title="Level",
         yaxis_title="Count",
         template=template,
-        height=400
+        width=chart_w, height=chart_h
     )
     desc13 = ", ".join([f"{k}: {int(v)}" for k, v in ergo_counts.items()])
     charts.append({"fig": fig13, "desc": desc13})
@@ -427,7 +429,8 @@ def create_html_report(charts: list, output_path: str, table_html: str):
               try {
                 var gd = p; var layout = gd.layout || {}; 
                 originals.push({gd:gd, w: layout.width, h: layout.height});
-                Plotly.relayout(gd, {width: 1050, height: 650});
+                // Compact size to fit two charts per page if needed
+                Plotly.relayout(gd, {width: 680, height: 360});
               } catch(e) {}
             });
             var opt = {
@@ -469,6 +472,7 @@ def main():
     print(f"✓ Loaded {len(df)} rows, {len(df.columns)} columns")
     
     print("\n📊 Creating charts...")
+    # Default screen size; for better A4 fit we reduce dimensions during export.
     charts = create_all_charts(df)
     print(f"✓ Created {len(charts)} charts")
     
