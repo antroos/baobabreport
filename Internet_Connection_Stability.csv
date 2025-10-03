@@ -1,0 +1,16 @@
+Timestamp;Where do you live? (Region);What is your main type of internet connection?;How would you rate the stability of your internet connection in 2025?;On average, how many hours per day do you not have internet connection?;How often did you experience power outages in 2025?;What was the average duration of outages (hours) in 2025?;Do you have a backup power source (e.g., UPS, generator, solar energy)?;If yes, what kind of backup power source do you have?;If yes, how long can it provide power on average per day?;What number and type of devices are available to you?;Do you have a separate workplace at home?;Do you have the necessary accessories (webcam, headset)?;Is your workplace ergonomically equipped (chair, desk, lighting, ventilation)?;
+29.09.2025 20:20:49;Kyiv;Fiber optic;Always stable;0;Other;8;No;-;0;Laptop;Yes;Yes, everything is available;Yes, fully;
+29.09.2025 20:26:43;Kyiv;Fiber optic, Mobile data (4G/5G);Always stable;0;Other;0;Yes;UPS, generators;8;Laptop;Yes;Yes, everything is available;Yes, fully;
+29.09.2025 20:32:58;Kirovohrad region;Fiber optic, Mobile data (4G/5G);Always stable;0;Never;0;No;-;0;Laptop;Yes;Yes, everything is available;Yes, fully;
+29.09.2025 20:33:33;Kirovohrad region;Fiber optic;Always stable;0;Never;4;No;-;0;Laptop;Yes;Something is missing;Partially;
+29.09.2025 20:34:32;Kirovohrad region;Fiber optic;Always stable;0;Never;0;No;-;0;Laptop;Yes;Something is missing;Partially;
+29.09.2025 20:34:48;Rivne region;Fiber optic;Always stable;0;1–2 times per month;1;Yes;UPS;2;Laptop;Yes;Yes, everything is available;Partially;
+29.09.2025 20:35:47;Kyiv region;Fiber optic;Always stable;0;Never;0;Yes;Powerbanks, battery+inverter;6;Laptop;Yes;Yes, everything is available;Yes, fully;
+29.09.2025 20:45:06;Kirovohrad region;Fiber optic;Always stable;0;1–2 times per month;3;No;-;0;Desktop computer;Yes;Something is missing;No;
+29.09.2025 20:59:05;Rivne region;Fiber optic;Always stable;0;1–2 times per month;0,166;No;-;0;Laptop;Yes;Yes, everything is available;Partially;
+29.09.2025 21:06:43;Kherson;Fiber optic;Always stable;0;1–2 times per month;36;Yes;Generator;8;Laptop;Yes;Something is missing;Yes, fully;
+29.09.2025 21:07:37;Rivne region;Mobile data (4G/5G);Sometimes disappears (1–2 times per day);0;1–2 times per month;3;Yes;Generator;1;Laptop;No;Something is missing;Partially;
+29.09.2025 21:21:02;Kirovohrad region;Fiber optic, Mobile data (4G/5G);Always stable;0;1–2 times per month;5;No;-;0;Laptop;Yes;Yes, everything is available;Yes, fully;
+29.09.2025 21:30:51;Kyiv region;Other;Always stable;0;Other;1;Yes;Bluetti UPS;6;Desktop computer;Yes;Yes, everything is available;Yes, fully;
+29.09.2025 21:34:05;Transcarpathian region;Fiber optic;Always stable;0;1–2 times per month;1;No;-;0;Laptop;Yes;Yes, everything is available;Yes, fully;
+29.09.2025 23:51:34;Volyn region;Fiber optic, Mobile data (4G/5G);Always stable;0;Other;4;Yes;Generator;6;Laptop;Yes;Yes, everything is available;Partially;
