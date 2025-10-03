@@ -390,9 +390,14 @@ def create_html_report(charts: list, output_path: str, table_html: str):
         /* A4 print tuning */
         @media print {
           html, body { width: 210mm; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-          .card { width: 190mm; margin: 0 auto 10mm; page-break-inside: avoid; break-inside: avoid; border-color:#243247; background:#0f1720; }
-          .card + .card { page-break-before: always; break-before: page; }
-          .card .inner { padding: 10mm; }
+          .card { width: 190mm; margin: 6mm auto; page-break-inside: avoid; break-inside: avoid; border-color:#243247; background:#0f1720; }
+          .card .inner { padding: 8mm; }
+          .charts .inner { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; }
+          .charts .chart { break-inside: avoid; page-break-inside: avoid; }
+          .modebar { display: none !important; }
+          thead th { display: table-header-group; }
+          tbody { display: table-row-group; }
+          table { font-size: 12px; }
         }
     </style>
 </head>
@@ -403,7 +408,7 @@ def create_html_report(charts: list, output_path: str, table_html: str):
       <div class=\"badge\">Raw responses table</div>
       <div class=\"table-wrap\">""" + table_html + """</div>
     </div></div>
-    <div class="card"><div class="inner">
+    <div class="card charts"><div class="inner">
 """
     ]
     
