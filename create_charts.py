@@ -18,8 +18,13 @@ def create_all_charts(df: pd.DataFrame) -> list:
     charts = []
     
     # Dark theme template
-    template = "plotly_dark"
-    colors = px.colors.qualitative.Set3
+    template = "plotly"
+    # Designer-ish palette (blue, teal, amber, red, violet, sky, green, rose)
+    colorway = ["#2563eb", "#14b8a6", "#f59e0b", "#ef4444", "#8b5cf6", "#0ea5e9", "#22c55e", "#e11d48"]
+    colors = colorway
+    import plotly.io as pio
+    pio.templates.default = template
+    pio.templates[template]['layout']['colorway'] = colors
     
     # Column names (exact, from CSV)
     region_col = 'Where do you live? (Region)'
@@ -357,48 +362,26 @@ def create_html_report(charts: list, output_path: str, table_html: str):
     <title>Internet Connection Stability Analysis</title>
     <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
     <style>
-        body {
-            background-color: #1a1a1a;
-            color: #e0e0e0;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            margin: 0;
-            padding: 20px;
-        }
-        h1 {
-            text-align: center;
-            color: #00d4ff;
-            font-size: 2.5em;
-            margin: 30px 0;
-        }
-        .chart-container {
-            max-width: 1200px;
-            margin: 40px auto;
-            background: #2d2d2d;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 212, 255, 0.1);
-        }
-        .chart {
-            margin: 20px 0;
-        }
-        .table-container {
-            max-width: 1200px;
-            margin: 40px auto;
-            background: #2d2d2d;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 212, 255, 0.1);
-            overflow-x: auto;
-        }
+        body { background:#ffffff; color:#111827; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji"; margin:0; padding:20px; }
+        h1 { text-align:center; color:#111827; font-size:2.2em; margin:30px 0; }
+        .card { max-width:1200px; margin:24px auto; background:#ffffff; border:1px solid #e5e7eb; border-radius:12px; box-shadow: 0 2px 10px rgba(17,24,39,.06); }
+        .card .inner { padding:20px; }
+        .chart { margin:20px 0; }
+        .badge { display:inline-block; padding:2px 8px; border-radius:999px; background:#f1f5f9; color:#0f172a; font-size:12px; border:1px solid #e2e8f0; }
+        .table-wrap { overflow-x:auto; }
         table { border-collapse: collapse; width: 100%; font-size: 14px; }
-        thead th { position: sticky; top: 0; background: #1f2937; color: #e5e7eb; }
-        th, td { border: 1px solid #374151; padding: 8px 10px; }
-        tr:nth-child(even) { background: #273043; }
+        thead th { position: sticky; top: 0; background: #f8fafc; color: #0f172a; }
+        th, td { border: 1px solid #e5e7eb; padding: 8px 10px; }
+        tr:nth-child(even) { background: #f8fafc; }
     </style>
 </head>
 <body>
     <h1>📊 Internet Connection Stability Analysis</h1>
-    <div class="chart-container">
+    <div class=\"card\"><div class=\"inner\">
+      <div class=\"badge\">Raw responses table</div>
+      <div class=\"table-wrap\">{TABLE_HTML}</div>
+    </div></div>
+    <div class="card"><div class="inner">
 """
     ]
     
@@ -413,14 +396,10 @@ def create_html_report(charts: list, output_path: str, table_html: str):
         html_parts.append(f'<div class="chart">{chart_html}<div style="margin-top:8px;color:#9aa4b2;">{desc}</div></div>')
     
     html_parts.append("""
-    </div>
-    <div class=\"table-container\">
-      <h2 style=\"margin-top:0;\">Raw responses table</h2>
-      {TABLE_HTML}
-    </div>
+    </div></div>
 </body>
 </html>
-""".replace('{TABLE_HTML}', table_html))
+""")
     
     with open(output_path, 'w', encoding='utf-8') as f:
         f.write('\n'.join(html_parts))
