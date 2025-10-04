@@ -382,10 +382,10 @@ def create_html_report(charts: list, output_path: str, table_html: str):
         .card .inner { padding:20px; }
         .chart { margin:20px 0; }
         .badge { display:inline-block; padding:2px 8px; border-radius:999px; background:#111827; color:#e5e7eb; font-size:12px; border:1px solid #1f2937; }
-        .table-wrap { overflow-x:auto; }
-        table { border-collapse: collapse; width: 100%; font-size: 14px; }
+        .table-wrap { overflow-x: visible; }
+        table { border-collapse: collapse; width: 100%; font-size: 12px; table-layout: fixed; }
         thead th { position: sticky; top: 0; background: #111827; color: #e5e7eb; }
-        th, td { border: 1px solid #1f2937; padding: 8px 10px; }
+        th, td { border: 1px solid #1f2937; padding: 6px 8px; word-break: break-word; white-space: normal; }
         tr:nth-child(even) { background: #0b1220; }
         /* A4 print tuning */
         @media print {
@@ -397,7 +397,7 @@ def create_html_report(charts: list, output_path: str, table_html: str):
           .modebar { display: none !important; }
           thead th { display: table-header-group; }
           tbody { display: table-row-group; }
-          table { font-size: 12px; }
+          table { font-size: 11px; }
         }
     </style>
 </head>
