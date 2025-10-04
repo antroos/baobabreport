@@ -403,7 +403,6 @@ def create_html_report(charts: list, output_path: str, table_html: str):
 </head>
 <body>
     <h1>📊 Internet Connection Stability Analysis</h1>
-    <div class=\"toolbar\"><button id=\"downloadPdf\" class=\"btn\">Download PDF</button></div>
     <div class=\"card\"><div class=\"inner\">
       <div class=\"badge\">Raw responses table</div>
       <div class=\"table-wrap\">""" + table_html + """</div>
@@ -424,48 +423,6 @@ def create_html_report(charts: list, output_path: str, table_html: str):
     
     html_parts.append("""
     </div></div>
-    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js\"></script>
-    <script src=\"https://cdn.plot.ly/plotly-2.27.0.min.js\"></script>
-    <script>
-      (function(){
-        var btn = document.getElementById('downloadPdf');
-        if(!btn) return;
-        btn.addEventListener('click', function(){
-          try {
-            if (typeof html2pdf === 'undefined') {
-              console.warn('html2pdf not loaded, using window.print fallback');
-              return window.print();
-            }
-            // Resize plots for print to fit A4 width
-            var plots = Array.prototype.slice.call(document.querySelectorAll('.js-plotly-plot'));
-            var originals = [];
-            plots.forEach(function(p){
-              try {
-                var gd = p; var layout = gd.layout || {}; 
-                originals.push({gd:gd, w: layout.width, h: layout.height});
-                // Compact size to fit two charts per page if needed
-                Plotly.relayout(gd, {width: 680, height: 360});
-              } catch(e) {}
-            });
-            var opt = {
-              margin: [10,10,10,10],
-              filename: 'Internet_Connection_Stability.pdf',
-              image: { type: 'jpeg', quality: 0.98 },
-              html2canvas: { scale: 2, useCORS: true, backgroundColor: '#0b0f14' },
-              jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-              pagebreak: { mode: ['css', 'legacy'], before: '.card' }
-            };
-            html2pdf().set(opt).from(document.body).save().then(function(){
-              // Restore plot sizes
-              originals.forEach(function(o){ try{ Plotly.relayout(o.gd, {width:o.w, height:o.h}); }catch(e){} });
-            });
-          } catch(e) {
-            console.error('PDF generation failed:', e);
-            window.print();
-          }
-        });
-      })();
-    </script>
 </body>
 </html>
 """)
